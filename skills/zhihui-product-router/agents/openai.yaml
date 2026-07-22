@@ -1,0 +1,3 @@
+display_name: AI Zhihui Feature Router
+short_description: Routes fashion-design requests to the right AI Zhihui feature.
+default_prompt: "Route the user's AI Zhihui request to the best product feature and explain key distinctions."

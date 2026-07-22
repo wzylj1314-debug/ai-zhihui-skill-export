@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>截图 FAQ 工作台</title>
+    <link rel="stylesheet" href="/static/style.css?v=20260721-faq-no-overflow" />
+  </head>
+  <body>
+    <header class="global-header">
+      <a class="global-brand" href="http://127.0.0.1:8900/">AI&#26234;&#32472;&#24037;&#20855;&#24179;&#21488;</a>
+      <nav aria-label="工具导航">
+        <a href="http://127.0.0.1:8900/">&#24037;&#20855;&#24179;&#21488;</a>
+        <a class="active" href="http://127.0.0.1:8899/">FAQ &#24037;&#20316;&#21488;</a>
+        <a href="http://127.0.0.1:8910/">&#23458;&#25143;&#23545;&#35805;&#20998;&#26512;</a>
+      </nav>
+    </header>
+    <div class="faq-app">
+      <aside class="faq-sidebar">
+        <div class="faq-brand">
+          <h1>FAQ &#24037;&#20316;&#21488;</h1>
+        </div>
+        <nav class="faq-nav" aria-label="FAQ ????">
+          <a class="active" href="/">&#25130;&#22270;&#24037;&#20316;&#21488;</a>
+          <a href="/board">&#36816;&#33829;&#30475;&#26495;</a>
+        </nav>
+      </aside>
+      <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>截图 FAQ 工作台</h1>
+          <p>拖截图、跑整理、审草稿、保存 Markdown。第一阶段只保存草稿，不入库。</p>
+        </div>
+        <div class="date-box">
+          <label for="draftDate">草稿日期</label>
+          <input id="draftDate" type="date" />
+        </div>
+      </header>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>上传截图</h2>
+          <button id="uploadBtn" type="button">上传</button>
+        </div>
+        <div id="dropZone" class="drop-zone">
+          <input id="fileInput" type="file" accept=".png,.jpg,.jpeg,.webp,.bmp" multiple />
+          <span>拖拽截图到这里，或点击选择文件</span>
+        </div>
+        <div id="uploadList" class="muted"></div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>处理进度</h2>
+          <button id="processBtn" type="button">开始整理</button>
+        </div>
+        <ol id="steps" class="steps">
+          <li data-stage="upload">上传</li>
+          <li data-stage="ocr">OCR</li>
+          <li data-stage="scrub">脱敏</li>
+          <li data-stage="structure">整理</li>
+          <li data-stage="rescan">复扫</li>
+          <li data-stage="done">完成</li>
+        </ol>
+        <div class="progress-wrap" aria-label="处理进度">
+          <div class="progress-meta">
+            <span id="progressText">等待开始</span>
+            <span id="elapsedText">已用时 00:00</span>
+          </div>
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+          </div>
+          <div id="progressHint" class="progress-hint muted"></div>
+        </div>
+        <pre id="processMessage" class="message"></pre>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>审核草稿</h2>
+          <div class="actions">
+            <select id="batchFilter">
+              <option value="">全部草稿</option>
+            </select>
+            <button id="latestBatchBtn" type="button">只看本次</button>
+            <button id="loadDraftsBtn" type="button">加载草稿</button>
+          </div>
+        </div>
+        <div id="warning" class="warning hidden"></div>
+        <div id="cards" class="cards"></div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>保存</h2>
+          <div class="actions">
+            <button id="saveBtn" type="button">保存草稿</button>
+            <button id="downloadBtn" type="button">导出 Markdown</button>
+            <button id="clearBtn" type="button" class="danger">清空当天草稿</button>
+            <a class="link-button" href="/board">去看板入库</a>
+          </div>
+        </div>
+        <div id="saveMessage" class="muted"></div>
+      </section>
+      </main>
+    </div>
+    <script src="/static/app.js?v=20260608-id-dedupe"></script>
+  </body>
+</html>

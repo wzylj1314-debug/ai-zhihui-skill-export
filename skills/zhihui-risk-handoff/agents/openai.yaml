@@ -1,0 +1,3 @@
+display_name: AI Zhihui Risk Handoff
+short_description: Applies compliance boundaries and human handoff rules safely.
+default_prompt: "Decide whether the AI Zhihui request is safe to answer or needs human handoff."

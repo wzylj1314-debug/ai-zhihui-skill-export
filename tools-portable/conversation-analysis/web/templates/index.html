@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>客户对话分析平台</title>
+    <link rel="stylesheet" href="/static/style.css?v=20260721-prompt-tabs" />
+  </head>
+  <body>
+    <header class="global-header">
+      <a class="global-brand" href="http://127.0.0.1:8900/">AI&#26234;&#32472;&#24037;&#20855;&#24179;&#21488;</a>
+      <nav aria-label="工具导航">
+        <a href="http://127.0.0.1:8900/">&#24037;&#20855;&#24179;&#21488;</a>
+        <a href="http://127.0.0.1:8899/">FAQ &#24037;&#20316;&#21488;</a>
+        <a class="active" href="http://127.0.0.1:8910/">&#23458;&#25143;&#23545;&#35805;&#20998;&#26512;</a>
+      </nav>
+    </header>
+    <main class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <h1>客户对话分析</h1>
+        </div>
+        <nav class="nav">
+          <button class="nav-item active" data-view="create">新建分析</button>
+          <button class="nav-item" data-view="history">分析详情</button>
+          <button class="nav-item" data-view="summary">今日汇总</button>
+          <button class="nav-item" data-view="prompt">提示词设置</button>
+        </nav>
+        <div id="configState" class="config-state"></div>
+      </aside>
+
+      <section class="workspace">
+        <section id="createView" class="view">
+          <header class="page-head">
+            <div>
+              <h2>新建分析</h2>
+              <p>直接粘贴录音转写文本，系统会自动识别标题、话题、客户和销售。</p>
+            </div>
+            <button id="analyzeBtn" type="button">开始分析</button>
+          </header>
+
+          <form id="analysisForm" class="create-grid">
+            <section class="input-card upload-panel">
+              <div>
+                <h3>批量文件</h3>
+                <p>适合一次上传多段录音转写。</p>
+              </div>
+              <div id="dropZone" class="drop-zone">
+                <input id="batchFiles" type="file" accept=".txt,.text,.md,.docx" multiple />
+                <div class="drop-copy">
+                  <strong>拖入文件，或点击选择</strong>
+                  <span>支持 .txt、.md、.docx</span>
+                </div>
+              </div>
+              <div class="upload-actions">
+                <div id="selectedFilesText" class="selected-files">未选择文件</div>
+                <button id="analyzeFilesBtn" type="button">批量分析文件</button>
+              </div>
+              <div id="batchProgress" class="batch-progress"></div>
+            </section>
+
+            <label class="input-card paste-card">
+              <span>
+                <strong>粘贴文本</strong>
+                <small>适合单段录音转写。</small>
+              </span>
+              <textarea name="raw_text" placeholder="请在这里粘贴对话内容"></textarea>
+            </label>
+            <details class="input-card wide optional-details">
+              <summary>可选：提前指定或修正识别信息</summary>
+              <div class="form-grid compact">
+                <label>
+                  <span>对话标题</span>
+                  <input name="title" placeholder="不填则自动生成" />
+                </label>
+                <label>
+                  <span>通话类型</span>
+                  <input name="call_type" placeholder="不填则自动识别" />
+                </label>
+                <label>
+                  <span>客户名称</span>
+                  <input name="customer_name" placeholder="不填则自动识别" />
+                </label>
+                <label>
+                  <span>销售姓名</span>
+                  <input name="sales_name" placeholder="不填则自动识别" />
+                </label>
+              </div>
+            </details>
+          </form>
+          <div id="createMessage" class="message-line"></div>
+        </section>
+
+        <section id="resultView" class="view hidden">
+          <header class="page-head">
+            <div>
+              <h2 id="resultTitle">分析结果</h2>
+              <p id="resultMeta"></p>
+            </div>
+            <div class="actions">
+              <button id="saveBtn" type="button" class="secondary">保存修改</button>
+              <button id="refreshMetaBtn" type="button" class="secondary">重新识别信息</button>
+              <button id="sendBusinessBtn" type="button">发业务群</button>
+              <button id="sendProductBtn" type="button">发产品群</button>
+            </div>
+          </header>
+
+          <div class="summary-strip">
+            <div><span>业务机会</span><strong id="sumOpportunity">-</strong></div>
+            <div><span>线索等级</span><strong id="sumLead">-</strong></div>
+            <div><span>销售阶段</span><strong id="sumStage">-</strong></div>
+            <div><span>产品适配</span><strong id="sumFit">-</strong></div>
+            <div><span>可信度</span><strong id="sumConfidence">-</strong></div>
+          </div>
+
+          <section class="meta-editor">
+            <label>
+              <span>对话标题</span>
+              <input id="metaTitle" />
+            </label>
+            <label>
+              <span>通话类型</span>
+              <input id="metaCallType" />
+            </label>
+            <label>
+              <span>客户名称</span>
+              <input id="metaCustomer" />
+            </label>
+            <label>
+              <span>销售姓名</span>
+              <input id="metaSales" />
+            </label>
+          </section>
+
+          <div class="tabs">
+            <button class="tab active" data-tab="business">业务版</button>
+            <button class="tab" data-tab="product">产品版</button>
+            <button class="tab" data-tab="raw">原始文本</button>
+          </div>
+
+          <div id="businessPanel" class="panel"></div>
+          <div id="productPanel" class="panel hidden"></div>
+          <div id="rawPanel" class="panel hidden">
+            <textarea id="rawText" readonly></textarea>
+          </div>
+          <div id="resultMessage" class="message-line"></div>
+        </section>
+
+        <section id="historyView" class="view hidden">
+          <header class="page-head">
+            <div>
+              <h2>分析详情</h2>
+              <p>查看最近 100 条单条对话分析。</p>
+            </div>
+            <div class="actions">
+              <input id="historyDate" type="date" />
+              <button id="filterHistoryBtn" type="button" class="secondary">筛选</button>
+              <button id="clearHistoryFilterBtn" type="button" class="secondary">清除</button>
+              <button id="deleteSelectedHistoryBtn" type="button" class="danger">批量删除</button>
+              <button id="refreshHistoryBtn" type="button" class="secondary">刷新</button>
+            </div>
+          </header>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="select-col"><input id="selectAllHistory" type="checkbox" aria-label="全选分析记录" /></th>
+                  <th>标题</th>
+                  <th>客户</th>
+                  <th>销售</th>
+                  <th>业务机会</th>
+                  <th>线索</th>
+                  <th>阶段</th>
+                  <th>产品适配</th>
+                  <th>发送状态</th>
+                  <th>创建时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="historyRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="summaryView" class="view hidden">
+          <header class="page-head">
+            <div>
+              <h2>今日汇总</h2>
+              <p>汇总当天所有单条分析，生成正式发群版本。</p>
+            </div>
+            <div class="actions">
+              <input id="summaryDate" type="date" />
+              <button id="loadSummaryBtn" type="button" class="secondary">读取</button>
+              <button id="generateSummaryBtn" type="button">生成汇总</button>
+              <button id="saveSummaryBtn" type="button" class="secondary">保存汇总</button>
+              <button id="sendSummaryBusinessBtn" type="button">发业务群</button>
+              <button id="sendSummaryProductBtn" type="button">发产品群</button>
+            </div>
+          </header>
+          <section class="summary-tools">
+            <div><span>分析记录</span><strong id="summaryRecordCount">0</strong></div>
+            <div><span>业务群</span><strong id="summaryBusinessStatus">未生成</strong></div>
+            <div><span>产品群</span><strong id="summaryProductStatus">未生成</strong></div>
+          </section>
+          <div class="tabs">
+            <button class="summary-tab tab active" data-summary-tab="business">业务汇总版</button>
+            <button class="summary-tab tab" data-summary-tab="product">产品汇总版</button>
+          </div>
+          <section class="panel">
+            <div id="summaryBusinessPanel">
+              <textarea id="businessSummaryText" class="message-editor" placeholder="点击“生成汇总”后显示业务汇总版"></textarea>
+            </div>
+            <div id="summaryProductPanel" class="hidden">
+              <textarea id="productSummaryText" class="message-editor" placeholder="点击“生成汇总”后显示产品汇总版"></textarea>
+            </div>
+          </section>
+          <div id="summaryMessage" class="message-line"></div>
+        </section>
+
+        <section id="promptView" class="view hidden">
+          <header class="page-head">
+            <div>
+              <h2>提示词设置</h2>
+              <p>单条分析和今日汇总分别使用不同提示词。</p>
+            </div>
+          </header>
+          <div class="prompt-tabs">
+            <button class="prompt-tab active" type="button" data-prompt-tab="single">单条分析提示词</button>
+            <button class="prompt-tab" type="button" data-prompt-tab="summary">汇总提示词</button>
+          </div>
+          <section id="singlePromptPanel" class="panel prompt-panel">
+            <div class="summary-editor-head">
+              <h3>单条分析提示词</h3>
+              <div class="actions">
+                <button id="savePromptBtn" type="button">保存提示词</button>
+                <button id="resetPromptBtn" type="button" class="secondary">恢复默认</button>
+              </div>
+            </div>
+            <textarea id="promptText" class="prompt-editor" placeholder="正在加载提示词..."></textarea>
+          </section>
+          <section id="summaryPromptPanel" class="panel prompt-panel hidden">
+            <div class="summary-editor-head">
+              <h3>汇总提示词</h3>
+              <div class="actions">
+                <button id="saveSummaryPromptBtn" type="button">保存汇总提示词</button>
+                <button id="resetSummaryPromptBtn" type="button" class="secondary">恢复默认</button>
+              </div>
+            </div>
+            <textarea id="summaryPromptText" class="prompt-editor" placeholder="正在加载汇总提示词..."></textarea>
+          </section>
+          <div id="promptMessage" class="message-line"></div>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js?v=20260721-prompt-tabs"></script>
+  </body>
+</html>

@@ -1,0 +1,293 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --line: #d8e0ec;
+  --text: #111827;
+  --muted: #5b6b82;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --green: #15803d;
+  --red: #b91c1c;
+  --shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
+  --shadow-hover: 0 16px 36px rgba(17, 24, 39, 0.13);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  min-height: 54px;
+  padding: 0 32px;
+  background: #182233;
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+  flex: 0 0 auto;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.app-header nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.app-header nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 17px;
+  color: #d8e2f1;
+  font-size: 14px;
+}
+
+.app-header nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.shell {
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 28px 0 42px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.tool-card,
+.loading,
+.empty,
+.error {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.content {
+  padding-top: 0;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.tool-card {
+  position: relative;
+  min-height: 152px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.tool-card:hover,
+.tool-card:focus-visible {
+  border-color: #b7c6de;
+  background: #fff;
+  box-shadow: var(--shadow-hover);
+  outline: 0;
+  transform: translateY(-5px);
+}
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.owner {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.status {
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status.online {
+  background: #e9fff1;
+  color: #16a34a;
+}
+
+.status.offline {
+  background: #fee2e2;
+  color: var(--red);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #1d4ed8;
+  font-size: 12px;
+}
+
+.meta-list {
+  display: grid;
+  gap: 7px;
+  margin-top: 13px;
+  color: #344054;
+  font-size: 13px;
+}
+
+.meta-list div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.meta-list span {
+  color: var(--muted);
+}
+
+.meta-list strong {
+  font-weight: 700;
+}
+
+.secondary-link {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.secondary-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.loading,
+.empty,
+.error {
+  grid-column: 1 / -1;
+  padding: 26px;
+  color: var(--muted);
+}
+
+.error {
+  color: var(--red);
+}
+
+@media (max-width: 980px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 18px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+  }
+
+  .app-header nav {
+    overflow-x: auto;
+  }
+
+  .app-header nav a {
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  .shell {
+    width: min(100% - 28px, 1180px);
+    padding-top: 16px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    padding: 18px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 21px;
+  }
+}

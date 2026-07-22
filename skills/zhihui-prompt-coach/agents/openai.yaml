@@ -1,0 +1,3 @@
+display_name: AI Zhihui Prompt Coach
+short_description: Coaches AI Remix prompt writing for local edits and retention.
+default_prompt: "Rewrite AI Remix requests into stable prompts with retention and edit targets."

@@ -1,0 +1,3 @@
+display_name: AI Zhihui Troubleshooting
+short_description: Troubleshoots failed, unstable, distorted, or unclear generations.
+default_prompt: "Diagnose AI Zhihui generation issues and provide practical next steps before handoff."

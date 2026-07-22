@@ -1,0 +1,40 @@
+# Runtime and local state
+runtime/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# Databases, logs, caches, and generated artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.tmp
+*.cache
+ocr-cache/
+faq-ledger.jsonl
+analysis.db
+xdg-cache/
+xdg-config/
+
+# Customer or evaluation data that should not be transferred by default
+screenshots/
+faq-drafts/
+sessions/
+credentials/
+responses/
+reports/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,3 @@
+display_name: AI Zhihui Feature Playbooks
+short_description: Explains feature inputs, workflows, outputs, and known boundaries.
+default_prompt: "Explain how to use an AI Zhihui feature based on its playbook and known limits."

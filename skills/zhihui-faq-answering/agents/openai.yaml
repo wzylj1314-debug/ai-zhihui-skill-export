@@ -1,0 +1,3 @@
+display_name: AI Zhihui FAQ Answering
+short_description: Answers common AI Zhihui support questions from FAQ assets.
+default_prompt: "Answer the customer's AI Zhihui question using the FAQ and real user-question references."

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ 运营看板</title>
+    <link rel="stylesheet" href="/static/style.css?v=20260721-date-picker-visible" />
+  </head>
+  <body>
+    <header class="global-header">
+      <a class="global-brand" href="http://127.0.0.1:8900/">AI&#26234;&#32472;&#24037;&#20855;&#24179;&#21488;</a>
+      <nav aria-label="工具导航">
+        <a href="http://127.0.0.1:8900/">&#24037;&#20855;&#24179;&#21488;</a>
+        <a class="active" href="http://127.0.0.1:8899/">FAQ &#24037;&#20316;&#21488;</a>
+        <a href="http://127.0.0.1:8910/">&#23458;&#25143;&#23545;&#35805;&#20998;&#26512;</a>
+      </nav>
+    </header>
+    <div class="faq-app">
+      <aside class="faq-sidebar">
+        <div class="faq-brand">
+          <h1>FAQ &#24037;&#20316;&#21488;</h1>
+        </div>
+        <nav class="faq-nav" aria-label="FAQ ????">
+          <a href="/">&#25130;&#22270;&#24037;&#20316;&#21488;</a>
+          <a class="active" href="/board">&#36816;&#33829;&#30475;&#26495;</a>
+        </nav>
+      </aside>
+      <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>FAQ &#36816;&#33829;&#30475;&#26495;</h1>
+        </div>
+        <div class="top-actions">
+          <a class="link-button" href="/">返回审核页</a>
+        </div>
+      </header>
+
+      <section class="band filter-band">
+        <div class="board-filters">
+          <label class="date-range-field">日期范围
+            <input id="dateRangeText" type="text" readonly placeholder="选择日期范围" />
+            <input id="fromDate" type="hidden" />
+            <input id="toDate" type="hidden" />
+            <div id="dateRangePicker" class="date-range-picker hidden" aria-label="日期范围选择器"></div>
+          </label>
+          <label>适用功能<input id="featureFilter" placeholder="如 AI改款" /></label>
+          <label>归属文件<select id="fileFilter"><option value="">全部</option></select></label>
+          <label>入库状态
+            <select id="commitStateFilter">
+              <option>待入库</option>
+              <option>已入库</option>
+              <option>全部</option>
+            </select>
+          </label>
+          <label>关键词<input id="keywordFilter" placeholder="问题/回答/ID" /></label>
+          <button id="refreshBoardBtn" type="button">查询</button>
+        </div>
+      </section>
+
+      <section class="stats-grid" id="statsGrid"></section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>通过项台账</h2>
+          <div class="actions">
+            <button id="batchCommitBtn" type="button">批量入库</button>
+            <button id="batchDeleteBtn" class="link-danger" type="button">批量删除</button>
+          </div>
+        </div>
+        <div id="boardMessage" class="muted"></div>
+        <div class="table-wrap">
+          <table class="board-table">
+            <thead>
+              <tr>
+                <th><input id="selectAllRows" type="checkbox" /></th>
+                <th>日期</th>
+                <th>问题</th>
+                <th>适用功能</th>
+                <th>归属文件</th>
+                <th>正式ID</th>
+                <th>入库状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="boardRows"></tbody>
+          </table>
+        </div>
+      </section>
+      </main>
+    </div>
+    <script src="/static/board.js?v=20260721-date-picker-visible"></script>
+  </body>
+</html>

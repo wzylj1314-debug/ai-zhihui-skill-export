@@ -1,0 +1,43 @@
+{
+  "name": "ai-zhihui-skill-export",
+  "version": "1.0.0-draft",
+  "source": "AI智绘客服机器人",
+  "source_mode": "read-only export; existing OpenClaw runtime files are not modified",
+  "generated_at": "2026-07-22T01:51:24.918Z",
+  "skills": [
+    "zhihui-product-router",
+    "zhihui-feature-playbooks",
+    "zhihui-faq-answering",
+    "zhihui-risk-handoff",
+    "zhihui-prompt-coach",
+    "zhihui-troubleshooting",
+    "zhihui-sales-assistant",
+    "zhihui-ops-tools"
+  ],
+  "bundles": [
+    "customer-service",
+    "sales-assistant",
+    "prompt-coach",
+    "knowledge-maintainer"
+  ],
+  "tools_portable": [
+    "faq-ingest",
+    "conversation-analysis",
+    "tool-hub",
+    "dingtalk",
+    "qmd-search"
+  ],
+  "excluded_sensitive_assets": [
+    ".env",
+    "tokens",
+    "webhooks",
+    "customer screenshots",
+    "OCR cache",
+    "FAQ drafts",
+    "conversation analysis databases",
+    "sessions",
+    "credentials",
+    "evaluation responses",
+    "QMD indexes"
+  ]
+}
