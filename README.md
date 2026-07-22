@@ -1,5 +1,5 @@
 [DETAILED_CAPABILITY_INVENTORY.md](https://github.com/user-attachments/files/30258778/DETAILED_CAPABILITY_INVENTORY.md)
-# AI 智绘 Skill 详细能力清单
+# AI 智绘 业务 Skill 详细能力清单
 
 生成日期：2026-07-22
 
