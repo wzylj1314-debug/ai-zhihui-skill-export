@@ -1,0 +1,3 @@
+display_name: AI Zhihui Customer Intent
+short_description: Classifies customer support intent and produces safe replies or handoff decisions.
+default_prompt: "Resolve this AI Zhihui customer message with an intent label, safe customer-facing answer, evidence, and handoff decision."

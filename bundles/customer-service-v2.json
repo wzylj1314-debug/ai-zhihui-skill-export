@@ -1,0 +1,19 @@
+{
+  "name": "customer-service-v2",
+  "description": "Customer support bundle using the final scenario-based customer intent skill.",
+  "skills": [
+    "zhihui-customer-intent-resolution"
+  ],
+  "references": [
+    "product-features",
+    "faq",
+    "real-user-questions",
+    "troubleshooting",
+    "risk-policy",
+    "prompt-examples"
+  ],
+  "tools": [
+    "qmd-search",
+    "dingtalk"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "knowledge-maintainer-v2",
+  "description": "Knowledge maintenance bundle for deciding whether support artifacts should become reusable references.",
+  "skills": [
+    "zhihui-knowledge-capture-decision"
+  ],
+  "references": [
+    "knowledge-capture",
+    "faq",
+    "real-user-questions",
+    "troubleshooting",
+    "risk-policy",
+    "sales-playbook",
+    "product-features"
+  ],
+  "tools": [
+    "faq-ingest",
+    "qmd-search",
+    "dingtalk",
+    "conversation-analysis"
+  ]
+}

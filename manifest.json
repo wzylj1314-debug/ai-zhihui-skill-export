@@ -1,10 +1,16 @@
 {
   "name": "ai-zhihui-skill-export",
-  "version": "1.0.0-draft",
+  "version": "2.0.0-scenario-restructure",
   "source": "AI智绘客服机器人",
   "source_mode": "read-only export; existing OpenClaw runtime files are not modified",
-  "generated_at": "2026-07-22T01:51:24.918Z",
-  "skills": [
+  "updated_at": "2026-07-24",
+  "status": "final execution package draft; validate with real sample sets before production agent rollout",
+  "final_skills": [
+    "zhihui-customer-intent-resolution",
+    "zhihui-business-signal-extraction",
+    "zhihui-knowledge-capture-decision"
+  ],
+  "legacy_skills_retained_for_traceability": [
     "zhihui-product-router",
     "zhihui-feature-playbooks",
     "zhihui-faq-answering",
@@ -14,18 +20,48 @@
     "zhihui-sales-assistant",
     "zhihui-ops-tools"
   ],
+  "legacy_skills_path": "legacy-skills/",
+  "reference_groups": [
+    "product-features",
+    "faq",
+    "real-user-questions",
+    "risk-policy",
+    "troubleshooting",
+    "sales-playbook",
+    "prompt-examples",
+    "knowledge-capture"
+  ],
   "bundles": [
+    "customer-service-v2",
+    "business-analysis-v2",
+    "knowledge-maintainer-v2",
+    "portable-full-v2"
+  ],
+  "legacy_bundles": [
     "customer-service",
     "sales-assistant",
     "prompt-coach",
     "knowledge-maintainer"
   ],
+  "legacy_bundles_path": "legacy-bundles/",
   "tools_portable": [
     "faq-ingest",
     "conversation-analysis",
     "tool-hub",
     "dingtalk",
     "qmd-search"
+  ],
+  "sample_sets": [
+    "samples/customer-intent/sample-set.md",
+    "samples/business-signal/sample-set.md",
+    "samples/knowledge-capture/sample-set.md"
+  ],
+  "docs": [
+    "7.22复盘结构调整.md",
+    "LEGACY_SKILLS_RESTRUCTURE_MAP.md",
+    "ROUTING_AND_ACCEPTANCE.md",
+    "FINAL_EXECUTION_REPORT.md",
+    "TRANSFER_CHECKLIST.md"
   ],
   "excluded_sensitive_assets": [
     ".env",

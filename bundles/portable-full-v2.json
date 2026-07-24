@@ -1,0 +1,26 @@
+{
+  "name": "portable-full-v2",
+  "description": "Full portable AI Zhihui capability package with three final skills, references, and deterministic tools.",
+  "skills": [
+    "zhihui-customer-intent-resolution",
+    "zhihui-business-signal-extraction",
+    "zhihui-knowledge-capture-decision"
+  ],
+  "references": [
+    "product-features",
+    "faq",
+    "real-user-questions",
+    "risk-policy",
+    "troubleshooting",
+    "sales-playbook",
+    "prompt-examples",
+    "knowledge-capture"
+  ],
+  "tools": [
+    "faq-ingest",
+    "conversation-analysis",
+    "tool-hub",
+    "dingtalk",
+    "qmd-search"
+  ]
+}

@@ -1,0 +1,3 @@
+display_name: AI Zhihui Business Signals
+short_description: Extracts opportunity, pain, budget, timeline, decision-chain, product-feedback, and risk signals.
+default_prompt: "Analyze this AI Zhihui customer conversation and output business signals with quoted evidence and next actions."

@@ -10,6 +10,8 @@
 - `dingtalk/`：独立钉钉 Markdown 发送器，默认 dry-run。
 - `qmd-search/`：QMD 调用封装，默认使用隔离索引目录，不复制当前电脑索引。
 
+工具边界见 `TOOL_BOUNDARIES.md`。这些目录是确定性执行工具，不作为独立 Skill 验收。
+
 ## 默认安全策略
 
 - 默认 runtime：`skill-export/runtime`。

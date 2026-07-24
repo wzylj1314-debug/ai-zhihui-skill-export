@@ -1,0 +1,3 @@
+display_name: AI Zhihui Knowledge Capture
+short_description: Decides whether support content should become reusable AI Zhihui knowledge.
+default_prompt: "Decide whether this AI Zhihui OCR, screenshot, conversation summary, or FAQ draft should enter the knowledge base."

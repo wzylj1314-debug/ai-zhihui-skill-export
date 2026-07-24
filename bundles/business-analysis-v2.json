@@ -1,0 +1,17 @@
+{
+  "name": "business-analysis-v2",
+  "description": "Business analysis bundle for extracting opportunity and product signals from customer communications.",
+  "skills": [
+    "zhihui-business-signal-extraction"
+  ],
+  "references": [
+    "sales-playbook",
+    "product-features",
+    "risk-policy"
+  ],
+  "tools": [
+    "conversation-analysis",
+    "qmd-search",
+    "dingtalk"
+  ]
+}
