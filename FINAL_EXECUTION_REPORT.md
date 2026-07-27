@@ -1,12 +1,12 @@
 # AI Zhihui Skill Restructure Execution Report
 
-Date: 2026-07-24
+Date: 2026-07-27
 
 ## Execution Summary
 
-The portable AI Zhihui package has been restructured from the original 8 asset-based skill prototypes into 3 scenario-based core skills.
+The portable AI Zhihui package has been restructured into 3 scenario-based core skills.
 
-Only the 3 final skills remain under `skills/`. The original 8 prototypes have been moved to `legacy-skills/` for traceability and are not active skills. Only v2 bundles remain under `bundles/`; legacy bundles have been moved to `legacy-bundles/`.
+Only the 3 final skills remain under `skills/`. Only v2 bundles remain under `bundles/`. Old prototype skill folders and old bundle files have been removed from the v2 package.
 
 This execution did not modify the production AI Zhihui or OpenClaw runtime. All changes are contained inside `skill-export/`.
 
@@ -31,7 +31,7 @@ Each final skill now includes:
 
 ### Added Top-Level References
 
-The old reference materials were copied into a shared reference taxonomy:
+Reusable reference materials were organized into a shared reference taxonomy:
 
 ```text
 references/
@@ -45,8 +45,6 @@ references/
   knowledge-capture/
 ```
 
-The original legacy skill folders were moved to `legacy-skills/` for traceability. Their reference materials were copied into the shared top-level `references/` taxonomy.
-
 ### Added Routing and Acceptance Rules
 
 Added `ROUTING_AND_ACCEPTANCE.md` to define:
@@ -55,10 +53,6 @@ Added `ROUTING_AND_ACCEPTANCE.md` to define:
 - How to handle mixed support/sales/knowledge-capture cases.
 - Minimum sample-set requirements.
 - Acceptance criteria and red-line failures.
-
-### Added Legacy Mapping
-
-Added `LEGACY_SKILLS_RESTRUCTURE_MAP.md` to explain how the old 8 skills map into the new structure.
 
 ### Added Validation Sample Sets
 
@@ -83,14 +77,11 @@ bundles/knowledge-maintainer-v2.json
 bundles/portable-full-v2.json
 ```
 
-Legacy bundle files were retained.
-
 ### Updated Manifest
 
 Updated `manifest.json` to reflect:
 
 - 3 final skills
-- 8 legacy skills retained for traceability
 - reference groups
 - portable tools
 - v2 bundles
@@ -112,19 +103,16 @@ This execution is additive and export-package-only.
 No existing feature should be affected because:
 
 - No production directory was edited.
-- Legacy skill prototypes are archived under `legacy-skills/` and removed from active `skills/`.
-- Legacy bundle files are archived under `legacy-bundles/` and removed from active `bundles/`.
 - Existing portable tool folder names remain unchanged.
-- v2 bundles are added separately instead of replacing old bundle files.
-- New references are copied into top-level folders instead of moved from legacy folders.
+- v2 bundles are the only active bundle files.
+- References live in top-level `references/` folders.
 
 ## Remaining Work Before Final Acceptance
 
 1. Fill the three sample sets with real customer, sales, and knowledge-capture cases.
 2. Validate the three final skills against those samples.
 3. Record pass/fail results and red-line failures.
-4. Only after validation, update downstream agents to prefer the 3 final skills over the old 8 prototypes.
-5. Optionally archive legacy skills after a stable rollout window.
+4. Only after validation, update downstream agents to use the 3 final skills and v2 bundles.
 
 ## Acceptance Gate
 
@@ -139,6 +127,6 @@ Accept it only after:
 
 ## Final Status
 
-The final execution structure is in place.
+The v2 execution structure is in place.
 
 The package is ready for sample-based validation and later agent integration.

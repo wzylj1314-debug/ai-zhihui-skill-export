@@ -3,24 +3,13 @@
   "version": "2.0.0-scenario-restructure",
   "source": "AI智绘客服机器人",
   "source_mode": "read-only export; existing OpenClaw runtime files are not modified",
-  "updated_at": "2026-07-24",
-  "status": "final execution package draft; validate with real sample sets before production agent rollout",
+  "updated_at": "2026-07-27",
+  "status": "v2 final package; validate with real sample sets before production agent rollout",
   "final_skills": [
     "zhihui-customer-intent-resolution",
     "zhihui-business-signal-extraction",
     "zhihui-knowledge-capture-decision"
   ],
-  "legacy_skills_retained_for_traceability": [
-    "zhihui-product-router",
-    "zhihui-feature-playbooks",
-    "zhihui-faq-answering",
-    "zhihui-risk-handoff",
-    "zhihui-prompt-coach",
-    "zhihui-troubleshooting",
-    "zhihui-sales-assistant",
-    "zhihui-ops-tools"
-  ],
-  "legacy_skills_path": "legacy-skills/",
   "reference_groups": [
     "product-features",
     "faq",
@@ -37,13 +26,6 @@
     "knowledge-maintainer-v2",
     "portable-full-v2"
   ],
-  "legacy_bundles": [
-    "customer-service",
-    "sales-assistant",
-    "prompt-coach",
-    "knowledge-maintainer"
-  ],
-  "legacy_bundles_path": "legacy-bundles/",
   "tools_portable": [
     "faq-ingest",
     "conversation-analysis",
@@ -57,8 +39,6 @@
     "samples/knowledge-capture/sample-set.md"
   ],
   "docs": [
-    "7.22复盘结构调整.md",
-    "LEGACY_SKILLS_RESTRUCTURE_MAP.md",
     "ROUTING_AND_ACCEPTANCE.md",
     "FINAL_EXECUTION_REPORT.md",
     "TRANSFER_CHECKLIST.md"

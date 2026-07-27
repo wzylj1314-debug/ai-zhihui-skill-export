@@ -12,12 +12,6 @@ Use this checklist when moving the AI Zhihui portable package to another machine
 - [ ] Copy `tools-portable/` only when OCR, QMD, DingTalk, FAQ workbench, or conversation-analysis tools are needed.
 - [ ] Copy `manifest.json`, `ROUTING_AND_ACCEPTANCE.md`, and `FINAL_EXECUTION_REPORT.md`.
 
-## Optional Traceability Contents
-
-- [ ] Keep `legacy-skills/` if reviewers need history or comparison.
-- [ ] Keep `legacy-bundles/` only for backward compatibility.
-- [ ] Keep `7.22复盘结构调整.md` for leadership review context.
-
 ## Do Not Transfer By Default
 
 - [ ] `.env` files.
