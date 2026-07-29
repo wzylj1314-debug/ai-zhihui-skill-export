@@ -18,8 +18,8 @@
 ## 示例
 
 ```powershell
-$env:ZHIHUI_QMD_BIN = "C:\Users\you\AppData\Roaming\npm\qmd.cmd"
-$env:ZHIHUI_KB_DIR = "D:\skill-export\runtime\workspace\v1_0_3"
+$env:ZHIHUI_QMD_BIN = "<target-machine-qmd.cmd>"
+$env:ZHIHUI_KB_DIR = "<target-skill-export>\runtime\workspace\v1_0_3"
 .\Rebuild-QmdIndex.ps1
 .\Search-Qmd.ps1 -Query "怎么做虚拟试衣"
 ```

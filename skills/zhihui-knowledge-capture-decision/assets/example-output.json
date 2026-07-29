@@ -1,0 +1,20 @@
+{
+  "capture_decision": "入库",
+  "knowledge_type": "排障规则",
+  "target_reference": "references/troubleshooting/",
+  "dedupe_result": {
+    "is_duplicate": false,
+    "similar_items": []
+  },
+  "sensitivity_check": {
+    "has_sensitive_content": false,
+    "risk_types": []
+  },
+  "quality_check": {
+    "is_reusable": true,
+    "reason": "该内容来自高频客服问题，包含失败现象和可执行排障建议。"
+  },
+  "draft": "问题：试衣图看起来不像真人怎么办？建议：检查模特图清晰度、衣服图完整度，优先选择正面、无遮挡、姿势清晰的图片；如果多次尝试仍异常，转人工排查。",
+  "review_required": false,
+  "review_reason": ""
+}

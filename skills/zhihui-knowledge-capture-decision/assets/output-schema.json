@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Zhihui Knowledge Capture Output",
+  "type": "object",
+  "required": [
+    "capture_decision",
+    "knowledge_type",
+    "target_reference",
+    "dedupe_result",
+    "sensitivity_check",
+    "quality_check",
+    "draft",
+    "review_required",
+    "review_reason"
+  ],
+  "properties": {
+    "capture_decision": {
+      "type": "string",
+      "enum": ["入库", "暂存", "不入库", "转人工复核"]
+    },
+    "knowledge_type": {
+      "type": "string",
+      "enum": ["FAQ", "真实问法", "排障规则", "风险边界", "销售话术", "产品反馈"]
+    },
+    "target_reference": {"type": "string"},
+    "dedupe_result": {
+      "type": "object",
+      "required": ["is_duplicate", "similar_items"],
+      "properties": {
+        "is_duplicate": {"type": "boolean"},
+        "similar_items": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "sensitivity_check": {
+      "type": "object",
+      "required": ["has_sensitive_content", "risk_types"],
+      "properties": {
+        "has_sensitive_content": {"type": "boolean"},
+        "risk_types": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "quality_check": {
+      "type": "object",
+      "required": ["is_reusable", "reason"],
+      "properties": {
+        "is_reusable": {"type": "boolean"},
+        "reason": {"type": "string"}
+      }
+    },
+    "draft": {"type": "string"},
+    "review_required": {"type": "boolean"},
+    "review_reason": {"type": "string"}
+  }
+}

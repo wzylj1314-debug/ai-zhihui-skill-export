@@ -7,6 +7,23 @@ description: Resolve AI Zhihui customer-service messages by classifying intent, 
 
 Use this skill to turn a live customer message into a safe, useful support response.
 
+## Portable Use
+
+This skill is self-contained for agent use. It does not require local absolute paths, tokens, webhooks, databases, QMD indexes, or production AI Zhihui runtime access.
+
+For quick integration:
+
+1. Give the agent this `SKILL.md`.
+2. Provide the customer message and optional context.
+3. Ask the agent to follow `references/output-contract.md`.
+4. Validate structured JSON with `scripts/validate_customer_intent_output.py` when deterministic checking is needed.
+
+Read these references only when needed:
+
+- `references/intent-resolution-rules.md`: intent, risk, troubleshooting, and handoff rules.
+- `references/output-contract.md`: input/output contract, required fields, and output modes.
+- `references/agent-adapter-guide.md`: how to connect this skill to different agents.
+
 ## Trigger Boundary
 
 Use this skill when the input is a customer-service question or short support thread.
@@ -27,7 +44,8 @@ Expected input fields:
 {
   "user_message": "customer original message",
   "conversation_context": "optional prior turns",
-  "attachments_summary": "optional screenshot or image summary"
+  "attachments_summary": "optional screenshot or image summary",
+  "output_mode": "json/markdown/both"
 }
 ```
 
@@ -36,12 +54,13 @@ Expected input fields:
 1. Classify the customer intent as one of: `feature_recommendation`, `operation_help`, `faq`, `generation_troubleshooting`, `risk_handoff`, or `complaint_escalation`.
 2. Check risk boundaries before answering business-sensitive questions.
 3. Load only the needed reference:
-   - Product feature choice: `../../references/product-features/function-router.md`, `../../references/product-features/function-catalog.md`, or the relevant F/T feature file.
-   - Known question: `../../references/faq/faq.md` and `../../references/real-user-questions/user-questions.md`.
-   - Failed or abnormal output: `../../references/troubleshooting/troubleshooting-general.md` or `../../references/troubleshooting/troubleshooting-by-feature.md`.
-   - Price, contract, copyright, refund, API, private deployment, data privacy, complaint, or repeated failure: `../../references/risk-policy/`.
-4. If the knowledge is uncertain, use the portable QMD search tool before answering.
-5. If a risk rule is triggered, do not make promises. Produce a handoff reason and a concise customer-facing holding reply.
+   - Product feature choice: `references/product-features/function-router.md`, `references/product-features/function-catalog.md`, or the relevant F/T feature file.
+   - Known question: `references/faq/faq.md` and `references/real-user-questions/user-questions.md`.
+   - Failed or abnormal output: `references/troubleshooting/troubleshooting-general.md` or `references/troubleshooting/troubleshooting-by-feature.md`.
+   - Price, contract, copyright, refund, API, private deployment, data privacy, complaint, or repeated failure: `references/risk-policy/`.
+4. Use `references/intent-resolution-rules.md` when a message contains mixed feature, FAQ, troubleshooting, and risk signals.
+5. If the knowledge is uncertain, use the portable QMD search tool only when tool use is explicitly allowed.
+6. If a risk rule is triggered, do not make promises. Produce a handoff reason and a concise customer-facing holding reply.
 
 ## Output
 
@@ -67,3 +86,5 @@ Return structured output:
 - Do not invent features outside the reference set.
 - Do not ask the customer to repeat information already present in the conversation unless it is needed to resolve ambiguity.
 - Escalate repeated failures, complaints, legal/commercial questions, privacy questions, and low-confidence answers.
+- Do not send DingTalk messages automatically. Return handoff information first; sending is a separate explicit tool action.
+- Do not include private customer data, tokens, webhooks, or raw screenshots in output.

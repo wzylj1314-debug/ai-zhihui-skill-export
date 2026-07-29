@@ -7,6 +7,23 @@ description: Decide whether AI Zhihui screenshots, OCR output, support conversat
 
 Use this skill before writing new knowledge into the portable knowledge package.
 
+## Portable Use
+
+This skill is self-contained for agent use. It does not require local absolute paths, tokens, webhooks, databases, QMD indexes, OCR cache, or production AI Zhihui runtime access.
+
+For quick integration:
+
+1. Give the agent this `SKILL.md`.
+2. Provide OCR text, screenshot summary, FAQ draft, conversation summary, or operator note.
+3. Ask the agent to follow `references/output-contract.md`.
+4. Validate structured JSON with `scripts/validate_knowledge_capture_output.py` when deterministic checking is needed.
+
+Read these references only when needed:
+
+- `references/capture-decision-rules.md`: store, hold, reject, review, dedupe, and sensitivity rules.
+- `references/output-contract.md`: input/output contract, required fields, and output modes.
+- `references/agent-adapter-guide.md`: how to connect this skill to different agents.
+
 ## Trigger Boundary
 
 Use this skill when the input is OCR text, a screenshot summary, a conversation summary, a FAQ draft, or an operator note that may become reusable knowledge.
@@ -24,7 +41,8 @@ Do not use it when:
   "source_content": "OCR text, screenshot summary, conversation summary, or FAQ draft",
   "source_type": "截图/OCR/会话摘要/人工草稿",
   "existing_search_results": "optional QMD search results",
-  "operator_notes": "optional human notes"
+  "operator_notes": "optional human notes",
+  "output_mode": "json/markdown/both"
 }
 ```
 
@@ -52,6 +70,7 @@ Do not use it when:
 4. Apply sensitivity and promise-risk checks.
 5. Produce a draft only when the content is reusable and safe.
 6. Mark manual review when the content affects commercial, legal, privacy, product capability, or public-facing promises.
+7. Use `references/capture-decision-rules.md` for mixed cases such as FAQ plus risk, product feedback plus support, or OCR with private data.
 
 ## Output
 
@@ -75,3 +94,5 @@ Do not use it when:
 - Do not store low-frequency noise as FAQ.
 - Do not silently overwrite or replace existing knowledge.
 - Do not turn uncertain product capability into a public promise.
+- Do not run OCR, QMD, or DingTalk automatically. Return the decision first; tool execution is a separate explicit action.
+- Do not include private customer data in the draft.

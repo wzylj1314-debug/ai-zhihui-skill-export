@@ -1,0 +1,8 @@
+{
+  "output_mode": "both",
+  "redact_private_data": true,
+  "manual_review_for_risk": true,
+  "allow_tool_use": false,
+  "capture_decisions": ["入库", "暂存", "不入库", "转人工复核"],
+  "knowledge_types": ["FAQ", "真实问法", "排障规则", "风险边界", "销售话术", "产品反馈"]
+}

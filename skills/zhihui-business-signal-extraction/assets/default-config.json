@@ -1,0 +1,8 @@
+{
+  "output_mode": "both",
+  "min_evidence_required": true,
+  "redact_private_data": true,
+  "allow_tool_use": false,
+  "default_next_action_owners": ["销售", "产品", "技术", "客服", "暂不处理"],
+  "opportunity_levels": ["A", "B", "C", "None"]
+}

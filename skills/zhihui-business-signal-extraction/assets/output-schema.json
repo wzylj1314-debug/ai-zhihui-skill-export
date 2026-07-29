@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Zhihui Business Signal Output",
+  "type": "object",
+  "required": [
+    "opportunity_level",
+    "opportunity_reason",
+    "pain_points",
+    "budget_signal",
+    "timeline_signal",
+    "decision_chain",
+    "product_feedback",
+    "risk_flags",
+    "next_actions",
+    "summary_for_sales",
+    "summary_for_product"
+  ],
+  "properties": {
+    "opportunity_level": {
+      "type": "string",
+      "enum": ["A", "B", "C", "None"]
+    },
+    "opportunity_reason": {
+      "type": "string"
+    },
+    "pain_points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "evidence"],
+        "properties": {
+          "type": {"type": "string"},
+          "evidence": {"type": "string"}
+        }
+      }
+    },
+    "budget_signal": {
+      "type": "object",
+      "required": ["status", "evidence"],
+      "properties": {
+        "status": {"type": "string", "enum": ["明确", "隐含", "无"]},
+        "evidence": {"type": "string"}
+      }
+    },
+    "timeline_signal": {
+      "type": "object",
+      "required": ["status", "evidence"],
+      "properties": {
+        "status": {"type": "string", "enum": ["紧急", "近期", "长期", "不明确"]},
+        "evidence": {"type": "string"}
+      }
+    },
+    "decision_chain": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "evidence"],
+        "properties": {
+          "role": {"type": "string"},
+          "evidence": {"type": "string"}
+        }
+      }
+    },
+    "product_feedback": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["feature", "feedback_type", "evidence"],
+        "properties": {
+          "feature": {"type": "string"},
+          "feedback_type": {"type": "string"},
+          "evidence": {"type": "string"}
+        }
+      }
+    },
+    "risk_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "evidence"],
+        "properties": {
+          "type": {"type": "string"},
+          "evidence": {"type": "string"}
+        }
+      }
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["owner", "action", "priority"],
+        "properties": {
+          "owner": {"type": "string", "enum": ["销售", "产品", "技术", "客服", "暂不处理"]},
+          "action": {"type": "string"},
+          "priority": {"type": "string", "enum": ["high", "medium", "low"]},
+          "evidence": {"type": "string"}
+        }
+      }
+    },
+    "summary_for_sales": {
+      "type": "string"
+    },
+    "summary_for_product": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "source_content": "粘贴 OCR 文本、截图摘要、会话摘要或 FAQ 草稿。",
+  "source_type": "截图/OCR/会话摘要/人工草稿",
+  "existing_search_results": "可选，已有知识检索结果",
+  "operator_notes": "可选，人工备注",
+  "output_mode": "both"
+}

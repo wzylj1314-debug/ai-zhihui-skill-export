@@ -1,0 +1,6 @@
+{
+  "user_message": "粘贴客户原话，例如：这个能不能商用，版权怎么算？",
+  "conversation_context": "可选，粘贴多轮上下文",
+  "attachments_summary": "可选，截图或图片内容摘要",
+  "output_mode": "both"
+}

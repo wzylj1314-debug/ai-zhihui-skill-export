@@ -1,0 +1,11 @@
+{
+  "conversation": "粘贴客户沟通全文。可以是聊天记录、电话转写、会议纪要或会话分析摘要。",
+  "customer_profile": {
+    "industry": "可选，客户行业",
+    "role": "可选，客户角色",
+    "company_size": "可选，团队或公司规模",
+    "source": "聊天/电话转写/会议纪要/会话分析"
+  },
+  "analysis_goal": "商机识别/产品反馈/销售跟进/管理汇总",
+  "output_mode": "both"
+}

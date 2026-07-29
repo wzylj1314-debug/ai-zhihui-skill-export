@@ -1,0 +1,8 @@
+{
+  "output_mode": "both",
+  "risk_handoff_required": true,
+  "redact_private_data": true,
+  "allow_tool_use": false,
+  "intent_types": ["功能推荐", "操作咨询", "FAQ", "效果排障", "风险转人工", "投诉升级"],
+  "confidence_levels": ["high", "medium", "low"]
+}

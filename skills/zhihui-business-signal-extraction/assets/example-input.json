@@ -1,0 +1,11 @@
+{
+  "conversation": "客户：我们设计师每周要出很多款，现在打样和看效果很慢。你们这个能不能批量处理？如果效果稳定，老板想看下能不能让整个团队用。价格怎么算，能不能先试一下？",
+  "customer_profile": {
+    "industry": "服装",
+    "role": "设计团队负责人",
+    "company_size": "团队",
+    "source": "聊天"
+  },
+  "analysis_goal": "商机识别",
+  "output_mode": "both"
+}

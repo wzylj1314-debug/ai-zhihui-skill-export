@@ -1,0 +1,11 @@
+{
+  "intent_type": "风险转人工",
+  "answer": "这个涉及商用和版权边界，需要由同事根据你的具体使用场景确认。我先帮你记录并转给相关同事处理。",
+  "recommended_feature": "",
+  "troubleshooting_steps": [],
+  "handoff_required": true,
+  "handoff_reason": "客户询问商用和版权，属于风险边界问题，不能由自动回复擅自承诺。",
+  "confidence": "high",
+  "evidence": ["这个能不能商用，版权怎么算"],
+  "business_signal_hint": "客户提到团队想先试一下，可能存在销售跟进价值。"
+}

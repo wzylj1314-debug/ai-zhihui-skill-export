@@ -1,0 +1,61 @@
+{
+  "opportunity_level": "A",
+  "opportunity_reason": "客户有明确效率痛点，提出批量处理需求，并出现老板、团队使用、价格和试用信号。",
+  "pain_points": [
+    {
+      "type": "设计效率",
+      "evidence": "我们设计师每周要出很多款，现在打样和看效果很慢"
+    },
+    {
+      "type": "批量能力",
+      "evidence": "能不能批量处理"
+    }
+  ],
+  "budget_signal": {
+    "status": "明确",
+    "evidence": "价格怎么算，能不能先试一下"
+  },
+  "timeline_signal": {
+    "status": "不明确",
+    "evidence": ""
+  },
+  "decision_chain": [
+    {
+      "role": "老板",
+      "evidence": "老板想看下"
+    },
+    {
+      "role": "团队",
+      "evidence": "让整个团队用"
+    }
+  ],
+  "product_feedback": [
+    {
+      "feature": "批量处理能力",
+      "feedback_type": "批量能力",
+      "evidence": "能不能批量处理"
+    }
+  ],
+  "risk_flags": [
+    {
+      "type": "价格",
+      "evidence": "价格怎么算"
+    }
+  ],
+  "next_actions": [
+    {
+      "owner": "销售",
+      "action": "安排试用和报价沟通，确认团队规模、使用频率和试用目标",
+      "priority": "high",
+      "evidence": "老板想看下能不能让整个团队用。价格怎么算，能不能先试一下"
+    },
+    {
+      "owner": "产品",
+      "action": "记录批量处理需求，评估是否已有对应能力或需要补充方案",
+      "priority": "medium",
+      "evidence": "能不能批量处理"
+    }
+  ],
+  "summary_for_sales": "该客户有明确设计效率痛点，并出现老板、团队使用、价格和试用信号，建议优先跟进试用和报价。",
+  "summary_for_product": "客户重点关注批量处理能力和效果稳定性，可作为批量工作流需求记录。"
+}

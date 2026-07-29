@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Zhihui Customer Intent Output",
+  "type": "object",
+  "required": [
+    "intent_type",
+    "answer",
+    "recommended_feature",
+    "troubleshooting_steps",
+    "handoff_required",
+    "handoff_reason",
+    "confidence",
+    "evidence"
+  ],
+  "properties": {
+    "intent_type": {
+      "type": "string",
+      "enum": ["功能推荐", "操作咨询", "FAQ", "效果排障", "风险转人工", "投诉升级"]
+    },
+    "answer": {"type": "string"},
+    "recommended_feature": {"type": "string"},
+    "troubleshooting_steps": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "handoff_required": {"type": "boolean"},
+    "handoff_reason": {"type": "string"},
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "business_signal_hint": {"type": "string"}
+  }
+}

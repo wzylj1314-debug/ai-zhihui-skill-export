@@ -7,6 +7,23 @@ description: Extract reusable business signals from real AI Zhihui customer comm
 
 Use this skill to turn customer communication into business judgment, not just a chat summary.
 
+## Portable Use
+
+This skill is self-contained for agent use. It does not require local absolute paths, tokens, webhooks, or production AI Zhihui runtime access.
+
+For quick integration:
+
+1. Give the agent this `SKILL.md`.
+2. Provide the conversation text and optional customer profile.
+3. Ask the agent to follow `references/output-contract.md`.
+4. Validate structured JSON with `scripts/validate_business_signal_output.py` when deterministic checking is needed.
+
+Read these references only when needed:
+
+- `references/business-signal-rules.md`: business signal rules and examples.
+- `references/output-contract.md`: input/output contract, required fields, and output modes.
+- `references/agent-adapter-guide.md`: how to connect this skill to different agents.
+
 ## Trigger Boundary
 
 Use this skill when the input is a sales/customer conversation, call transcript, meeting note, or long chat record.
@@ -19,11 +36,14 @@ Do not use it when:
 
 ## Inputs
 
+Accept either raw text or this structured shape:
+
 ```json
 {
   "conversation": "full customer communication",
   "customer_profile": "optional industry, role, company size, or source",
-  "analysis_goal": "商机识别/产品反馈/销售跟进/管理汇总"
+  "analysis_goal": "商机识别/产品反馈/销售跟进/管理汇总",
+  "output_mode": "json/markdown/both"
 }
 ```
 
@@ -52,8 +72,9 @@ Extract these signals only when supported by customer words:
 2. Score opportunity level using the level rules above.
 3. Extract every important signal with direct evidence from the customer.
 4. Map each next action to an owner: `销售`, `产品`, `技术`, `客服`, or `暂不处理`.
-5. If the conversation is long, use the portable conversation-analysis Web tool for a first-pass summary, then apply this skill's signal taxonomy.
-6. Use QMD search when checking whether a product-feedback point already exists in references.
+5. Use `references/business-signal-rules.md` for scoring details when the conversation contains mixed support, sales, product, and risk signals.
+6. If the conversation is long, optionally use the portable conversation-analysis Web tool for a first-pass summary, then apply this skill's signal taxonomy.
+7. Use QMD search only when checking whether a product-feedback point already exists in references.
 
 ## Output
 
@@ -79,3 +100,5 @@ Extract these signals only when supported by customer words:
 - Do not infer budget, authority, or timeline when the customer did not imply it.
 - Do not hide risk signals inside the summary. Put them in `risk_flags`.
 - Every important judgment must cite customer wording as evidence.
+- Do not include customer private data, phone numbers, account identifiers, tokens, webhooks, or raw screenshots in the output.
+- Do not send DingTalk messages automatically. Return `next_actions` first; sending is a separate explicit tool action.
